@@ -1,0 +1,17 @@
+{
+  "Home": {
+    "welcome": "Welcome to React/Redux Pokeplate",
+    "id": "ID",
+    "weight": "Weight",
+    "order": "Order"
+  },
+  "LoadingIcon": {
+    "loading": "LOADING ..."
+  },
+  "Header": {
+    "welcome": "This is a header"
+  },
+  "App": {
+    "notfound": "The page you are looking for does not exist"
+  }
+}
