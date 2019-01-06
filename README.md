@@ -29,5 +29,8 @@ npm run build
 ```
 output into dist folder main.js, main.css, and index.html
 
-To enable mock data from services, run window.enableMock() is your console or implement in your javascript. 
-window.disableMock() turns it off.
+To enable mock data from services, run:
+```
+window.enableMock() in your console or implement in your javascript
+window.disableMock() turns it off
+```
