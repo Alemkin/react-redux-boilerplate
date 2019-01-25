@@ -1,5 +1,11 @@
-import { GET_POKEMON } from '../constants/serviceTypes'
+import { GET_POKEMON } from '../service/getPokemon'
 import { actionTypes as asyncTypes, isAsyncOperation, isAsyncComplete, isAsyncFailure } from 'async-ops'
+
+export const GET_POKEMONS = 'GET_POKEMONS'
+
+export const getPokemons = () => ({
+  type: GET_POKEMONS
+})
 
 const initialError = {
   code: '',

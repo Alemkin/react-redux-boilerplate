@@ -1,7 +1,8 @@
 import { register } from 'async-ops'
 import { defaultOptions, throwExceptionErrors, deserializeJsonResponse } from '../utils/fetch'
-import { GET_POKEMON } from '../constants/serviceTypes'
 import { BASE_API_URL } from '../constants/url'
+
+export const GET_POKEMON = 'getPokemon'
 
 export const service = async name => {
   const url = BASE_API_URL + '/pokemon/' + name + '/'

@@ -1,7 +1,7 @@
 import { compose, lifecycle, branch, renderComponent } from 'recompose'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { GET_POKEMON } from '../../constants/serviceTypes'
+import { GET_POKEMON } from '../../service/getPokemon'
 import { actions as asyncActions } from 'async-ops'
 import { withRouter } from 'react-router'
 import LoadingIcon from '../LoadingIcon'
