@@ -9,9 +9,7 @@
     "lint": "standard \"./app/**/*.js\" | snazzy",
     "test": "cross-env NODE_ENV=test jest --verbose --watchAll",
     "build": "cross-env NODE_ENV=production webpack --mode production",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --disable-host-check",
-    "story": "start-storybook -p 9998",
-    "build-storybook": "build-storybook"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --disable-host-check"
   },
   "standard": {
     "parser": "babel-eslint",
@@ -55,12 +53,6 @@
     "@babel/core": "7.2.2",
     "@babel/preset-env": "7.2.0",
     "@babel/preset-react": "7.0.0",
-    "@storybook/addon-actions": "4.1.2",
-    "@storybook/addon-knobs": "4.1.2",
-    "@storybook/addon-links": "4.1.2",
-    "@storybook/addons": "4.1.2",
-    "@storybook/react": "4.1.2",
-    "addon-redux": "1.0.0",
     "autoprefixer": "9.4.3",
     "babel-eslint": "10.0.1",
     "babel-jest": "23.6.0",

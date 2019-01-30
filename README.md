@@ -1,6 +1,6 @@
 This is boilerplate code for React Redux web applications
 
-It uses Webpack 4, React 16, Redux, Bootstrap 4, ESLint with StandardJS, Sagas, Jest, and Storybook
+It uses Webpack 4, React 16, Redux, Bootstrap 4, ESLint with StandardJS, Sagas, and Jest
 
 Works out of the box, just need to have Node, and NPM installed
 
@@ -16,12 +16,6 @@ To run the linter:
 npm run lint
 ```
 output in the console informing you of issues
-
-To run storybook:
-```
-npm run story
-```
-then navigate to localhost:9998
 
 To build for production:
 ```
