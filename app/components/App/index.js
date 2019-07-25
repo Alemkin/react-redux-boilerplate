@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch)
 
 const lifecycleMethods = {
-  componentWillMount () {
+  componentDidMount () {
     this.props.asyncOperationStart(GET_POKEMON, 'magikarp')
   }
 }

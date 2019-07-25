@@ -2,7 +2,7 @@ const path = require('path')
 const EncodingPlugin = require('webpack-encoding-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const encodingPlugin = new EncodingPlugin({
@@ -11,10 +11,11 @@ const encodingPlugin = new EncodingPlugin({
 
 const minimize = {
   minimizer: [
-    new UglifyJsPlugin({
-      cache: true,
+    new TerserPlugin({
       parallel: true,
-      sourceMap: true // set to true if you want JS source maps
+      terserOptions: {
+        ecma: 5
+      }
     }),
     new OptimizeCSSAssetsPlugin({})
   ]
@@ -36,7 +37,17 @@ module.exports = {
       { test: /\.(js|jsx)$/, use: ['babel-loader'], include: path.join(__dirname, 'app') },
       { test: /\.(scss)$/, use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'] },
       { test: /\.(css)$/, use: [MiniCssExtractPlugin.loader, 'css-loader'] },
-      { test: /\.(png|jpg|gif|eot|ttf|woff|svg|woff2)(\?.*)?$/, use: ['url-loader?limit=1000&name=img/[name]-[hash].[ext]'] },
+      {
+        test: /\.(png|jpg|gif|eot|ttf|woff|svg|woff2)(\?.*)?$/,
+        use: [
+          {
+            loader: 'url-loader?name=img/[name]-[hash].[ext]',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
+      },
       { test: /\.js$/, use: ['i18next-resource-store-loader'], include: path.join(__dirname, './app/translations') },
       { test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/, loader: 'file-loader?name=[name].[ext]' }
     ]
@@ -59,7 +70,7 @@ module.exports = {
   optimization: process.env.NODE_ENV === 'production' ? minimize : {},
 
   devServer: {
-    port: 3000,
+    port: 3002,
     contentBase: path.join(__dirname, 'dist'),
     historyApiFallback: true
   }
