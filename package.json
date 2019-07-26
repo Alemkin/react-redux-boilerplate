@@ -47,7 +47,6 @@
     "react-redux": "6.0.0",
     "react-router-dom": "4.3.1",
     "reactstrap": "8.0.1",
-    "recompose": "0.30.0",
     "redux": "4.0.4",
     "redux-form": "8.2.4",
     "redux-saga": "1.0.5"
