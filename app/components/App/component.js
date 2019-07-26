@@ -15,7 +15,7 @@ const NotFound = () => <Row><Col><h1>{t('notfound')}</h1></Col></Row>
 const App = ({ name, asyncOperationStart, loading }) => {
   useEffect(() => {
     asyncOperationStart(GET_POKEMON, 'magikarp')
-  }, [name])
+  }, [])
 
   if (loading) return <LoadingIcon />
 
