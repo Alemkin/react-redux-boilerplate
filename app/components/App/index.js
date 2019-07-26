@@ -1,31 +1,21 @@
-import { compose, lifecycle, branch, renderComponent } from 'recompose'
-import { bindActionCreators } from 'redux'
+import { bindActionCreators, compose } from 'redux'
 import { connect } from 'react-redux'
-import { GET_POKEMON } from '../../service/getPokemon'
 import { actions as asyncActions } from 'async-ops'
 import { withRouter } from 'react-router'
-import LoadingIcon from '../LoadingIcon'
 import App from './component'
 
 const mapStateToProps = state => ({
-  loading: state.pokemon.loading
+  loading: state.pokemon.loading,
+  name: state.pokemon.name
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   asyncOperationStart: asyncActions.asyncOperationStart
 }, dispatch)
 
-const lifecycleMethods = {
-  componentDidMount () {
-    this.props.asyncOperationStart(GET_POKEMON, 'magikarp')
-  }
-}
-
 const enhance = compose(
   withRouter,
-  connect(mapStateToProps, mapDispatchToProps),
-  lifecycle(lifecycleMethods),
-  branch(props => props.loading, renderComponent(LoadingIcon))
+  connect(mapStateToProps, mapDispatchToProps)
 )
 
 export default enhance(App)
