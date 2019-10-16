@@ -29,7 +29,7 @@ module.exports = {
   output: {
     publicPath: '/',
     path: path.join(__dirname, '/dist'),
-    filename: 'main.js'
+    filename: 'main.[hash].js'
   },
 
   module: {
@@ -56,7 +56,7 @@ module.exports = {
   plugins: [
     encodingPlugin,
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: '[name].[hash].css',
       chunkFilename: '[id].css'
     }),
     new HtmlWebpackPlugin({
