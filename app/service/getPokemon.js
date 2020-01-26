@@ -1,4 +1,4 @@
-import { register } from 'async-ops'
+import { register } from 'use-async-ops'
 import { defaultOptions, throwExceptionErrors, deserializeJsonResponse } from '../utils/fetch'
 import { BASE_API_URL } from '../constants/url'
 

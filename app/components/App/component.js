@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Container, Row, Col } from 'reactstrap'
 import { Switch, Route, useLocation } from 'react-router-dom'
 import Header from '../Header'
@@ -11,7 +12,7 @@ const t = translateComponent('App')
 
 const NotFound = () => <Row><Col><h1>{t('notfound')}</h1></Col></Row>
 
-const App = ({ name, loading }) => {
+const App = ({ name, loading, error }) => {
   const location = useLocation()
   if (loading) return <LoadingIcon />
 
@@ -26,6 +27,11 @@ const App = ({ name, loading }) => {
       </Container>
     </div>
   )
+}
+
+App.propTypes = {
+  name: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired
 }
 
 export default App

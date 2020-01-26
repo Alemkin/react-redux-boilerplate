@@ -2,7 +2,7 @@ import { applyMiddleware } from 'redux'
 import invariant from 'redux-immutable-state-invariant'
 import { createLogger } from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
-import { enableMock, disableMock } from 'async-ops'
+import { enableMock, disableMock } from 'use-async-ops'
 
 export const sagaMiddleware = createSagaMiddleware()
 

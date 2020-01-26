@@ -1,5 +1,5 @@
 import { GET_POKEMON } from '../service/getPokemon'
-import { actionTypes as asyncTypes, isAsyncOperation, isAsyncComplete, isAsyncFailure } from 'async-ops'
+import { actionTypes as asyncTypes, reducerHelpers } from 'use-async-ops-redux'
 import { createSelector } from 'reselect'
 
 export const GET_POKEMONS = 'GET_POKEMONS'
@@ -15,7 +15,6 @@ const initialError = {
 }
 
 const initialState = {
-  loading: false,
   error: initialError,
   name: '',
   weight: 0,
@@ -25,21 +24,12 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case asyncTypes.OPERATION:
     case asyncTypes.COMPLETE:
-    case asyncTypes.FAILURE:
-      if (isAsyncOperation(GET_POKEMON)(action)) return getPokemon(state, action)
-      if (isAsyncComplete(GET_POKEMON)(action)) return getPokemonResult(state, action)
-      if (isAsyncFailure(GET_POKEMON)(action)) return getPokemonError(state, action)
+      if (reducerHelpers.isAsyncComplete(GET_POKEMON)(action)) return getPokemonResult(state, action)
       return state
     default: return state
   }
 }
-
-const getPokemon = (state, action) => ({
-  ...state,
-  loading: true
-})
 
 const getPokemonResult = (state, action) => {
   const p = action.response || {}
@@ -52,12 +42,6 @@ const getPokemonResult = (state, action) => {
     order: p.order || 0
   }
 }
-
-const getPokemonError = (state, action) => ({
-  ...state,
-  loading: false,
-  error: action.error
-})
 
 export const selectPokemon = createSelector(
   state => state.pokemon,
