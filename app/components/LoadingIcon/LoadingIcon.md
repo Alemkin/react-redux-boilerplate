@@ -1,0 +1,5 @@
+LoadingIcon example:
+
+```js
+<LoadingIcon />
+```

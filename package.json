@@ -13,7 +13,9 @@
     "test": "cross-env NODE_ENV=test jest --verbose --watchAll",
     "test-ci": "cross-env NODE_ENV=test jest --verbose",
     "build": "cross-env NODE_ENV=production webpack --mode production",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --disable-host-check"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --disable-host-check",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build"
   },
   "standard": {
     "parser": "babel-eslint",
@@ -70,6 +72,7 @@
     "babel-jest": "24.8.0",
     "babel-loader": "8.0.6",
     "babel-plugin-transform-object-rest-spread": "7.0.0-beta.3",
+    "babel-polyfill": "6.26.0",
     "bootstrap": "4.3.1",
     "circular-dependency-plugin": "5.0.2",
     "cross-env": "5.2.0",
@@ -93,6 +96,7 @@
     "node-sass": "4.13.1",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "postcss-loader": "3.0.0",
+    "react-styleguidist": "10.6.1",
     "react-testing-library": "5.4.0",
     "redux-immutable-state-invariant": "2.1.0",
     "redux-logger": "3.0.6",

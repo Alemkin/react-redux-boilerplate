@@ -18,7 +18,7 @@ const setTranslator = translateFn => {
 
 export const translate = (...langKeys) => {
   if (!langKeys || langKeys.length === 0) throw new Error('Expected one or more lang key arguments.')
-  if (!T) throw new Error('Translate was not initialized')
+  if (!T) initTranslator()
   return T([...langKeys].join('.'), { defaultValue: '** MISSING LANG KEY **' })
 }
 
