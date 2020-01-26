@@ -1,21 +1,21 @@
-import { bindActionCreators, compose } from 'redux'
-import { connect } from 'react-redux'
-import { actions as asyncActions } from 'async-ops'
-import { withRouter } from 'react-router'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import App from './component'
+import { GET_POKEMON } from '../../service/getPokemon'
+import { actions as asyncActions } from 'async-ops'
+import { selectPokemon } from '../../reducers/pokemon'
 
-const mapStateToProps = state => ({
-  loading: state.pokemon.loading,
-  name: state.pokemon.name
-})
+const AppContainer = () => {
+  const dispatch = useDispatch()
+  const pokemon = useSelector(selectPokemon)
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  asyncOperationStart: asyncActions.asyncOperationStart
-}, dispatch)
+  useEffect(() => {
+    dispatch(asyncActions.asyncOperationStart(GET_POKEMON, 'magikarp'))
+  }, [])
 
-const enhance = compose(
-  withRouter,
-  connect(mapStateToProps, mapDispatchToProps)
-)
+  return (
+    <App loading={pokemon.loading} name={pokemon.name} />
+  )
+}
 
-export default enhance(App)
+export default AppContainer

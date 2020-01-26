@@ -1,15 +1,14 @@
-import { memo } from 'react'
-import { compose } from 'redux'
-import { connect } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import Header from './component'
+import { selectPokemon } from '../../reducers/pokemon'
 
-const mapStateToProps = state => ({
-  name: state.pokemon.name
-})
+const HeaderContainer = () => {
+  const pokemon = useSelector(selectPokemon)
 
-const enhance = compose(
-  connect(mapStateToProps, null),
-  memo
-)
+  return (
+    <Header name={pokemon.name} />
+  )
+}
 
-export default enhance(Header)
+export default HeaderContainer

@@ -1,5 +1,6 @@
 import { GET_POKEMON } from '../service/getPokemon'
 import { actionTypes as asyncTypes, isAsyncOperation, isAsyncComplete, isAsyncFailure } from 'async-ops'
+import { createSelector } from 'reselect'
 
 export const GET_POKEMONS = 'GET_POKEMONS'
 
@@ -57,3 +58,8 @@ const getPokemonError = (state, action) => ({
   loading: false,
   error: action.error
 })
+
+export const selectPokemon = createSelector(
+  state => state.pokemon,
+  pokemon => pokemon
+)

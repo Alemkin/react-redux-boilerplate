@@ -1,17 +1,14 @@
-import { memo } from 'react'
-import { compose } from 'redux'
-import { connect } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import Home from './component'
+import { selectPokemon } from '../../reducers/pokemon'
 
-const mapStateToProps = state => ({
-  id: state.pokemon.id,
-  weight: state.pokemon.weight,
-  order: state.pokemon.order
-})
+const HomeContainer = () => {
+  const pokemon = useSelector(selectPokemon)
 
-const enhance = compose(
-  connect(mapStateToProps, null),
-  memo
-)
+  return (
+    <Home weight={pokemon.weight} id={pokemon.id} order={pokemon.order} />
+  )
+}
 
-export default enhance(Home)
+export default HomeContainer

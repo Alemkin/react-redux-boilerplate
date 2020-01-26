@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import { reducer as formReducer } from 'redux-form'
+import { reducer as async } from 'async-ops'
 import pokemon from './pokemon'
 
 const rootReducer = combineReducers({
   pokemon,
-  form: formReducer
+  async
 })
 
 export default rootReducer
