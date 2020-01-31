@@ -1,4 +1,4 @@
-import { register } from 'use-async-ops'
+import { registerOperation } from 'async-operations'
 import { defaultOptions, throwExceptionErrors, deserializeJsonResponse } from '../utils/fetch'
 import { BASE_API_URL } from '../constants/url'
 
@@ -275,4 +275,4 @@ const mock = request => Promise.resolve({
   weight: 905
 })
 
-register(GET_POKEMON, service, mock)
+export default registerOperation(GET_POKEMON, service, mock)

@@ -1,20 +1,26 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { createSelector } from 'reselect'
 import App from './component'
-import { GET_POKEMON } from '../../service/getPokemon'
-import { useAsyncOp } from 'use-async-ops'
+import getPokemonService from '../../service/getPokemon'
 import { selectPokemon } from '../../reducers/pokemon'
 
+export const selectPokemonStatus = createSelector(
+  state => getPokemonService.status(state),
+  status => status
+)
+
 const AppContainer = () => {
-  const { call, loading, error } = useAsyncOp(GET_POKEMON)
+  const dispatch = useDispatch()
   const pokemon = useSelector(selectPokemon)
+  const pokemonStatus = useSelector(selectPokemonStatus) || {}
 
   useEffect(() => {
-    call('magikarp')
+    dispatch(getPokemonService.action('magikarp'))
   }, [])
 
   return (
-    <App error={error} loading={loading} name={pokemon.name} />
+    <App error={pokemonStatus.error} loading={pokemonStatus.loading || false} name={pokemon.name} />
   )
 }
 

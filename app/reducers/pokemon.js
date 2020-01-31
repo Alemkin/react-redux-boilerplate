@@ -1,5 +1,4 @@
-import { GET_POKEMON } from '../service/getPokemon'
-import { actionTypes as asyncTypes, reducerHelpers } from 'use-async-ops-redux'
+import getPokemonService from '../service/getPokemon'
 import { createSelector } from 'reselect'
 
 export const GET_POKEMONS = 'GET_POKEMONS'
@@ -24,9 +23,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case asyncTypes.COMPLETE:
-      if (reducerHelpers.isAsyncComplete(GET_POKEMON)(action)) return getPokemonResult(state, action)
-      return state
+    case getPokemonService.COMPLETE: return getPokemonResult(state, action)
     default: return state
   }
 }
