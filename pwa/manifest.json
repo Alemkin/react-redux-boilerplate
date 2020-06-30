@@ -1,0 +1,15 @@
+{
+  "short_name": "R/R Starter",
+  "name": "React/Redux Boilerplate Application",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#FFF",
+  "background_color": "#FFF"
+}

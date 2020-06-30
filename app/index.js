@@ -12,6 +12,8 @@ import '../favicon.ico'
 
 import { initTranslator } from './utils/translate'
 
+import registerServiceWorker from './registerServiceWorker'
+
 initTranslator()
 
 ReactDOM.render(
@@ -22,3 +24,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('app')
 )
+
+registerServiceWorker()
