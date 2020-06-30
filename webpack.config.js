@@ -64,7 +64,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: 'index.html.ejs',
-      inject: 'body',
+      inject: false,
       filename: 'index.html',
       title: 'R/R Boilerplate'
     }),

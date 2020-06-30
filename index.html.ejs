@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#FFF">
     <link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap-4.2.1.min.css">
-    <link rel="manifest" href="./manifest.json">
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-4.2.1.min.css">
+    <link rel="manifest" href="/manifest.json">
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <script src="./assets/js/core-js-3.6.4.min.js"></script>
-    <script src="./assets/js/runtime-0.13.3.min.js"></script>
+    <script src="/assets/js/core-js-3.6.4.min.js"></script>
+    <script src="/assets/js/runtime-0.13.3.min.js"></script>
+    <link href="<%= htmlWebpackPlugin.files.css[0] %>" rel="stylesheet">
   </head>
   <body>
     <div id="app"></div>
+    <script type="text/javascript" src="<%= htmlWebpackPlugin.files.js[0] %>"></script>
   </body>
   <noscript>Your browser does not support JavaScript</noscript>
 </html>
