@@ -9,25 +9,25 @@ afterEach(cleanup)
 
 describe('App component', () => {
   it('renders', () => {
-    const wrapper = shallow(<App />)
+    const wrapper = shallow(<App name='test' loading={false} />)
 
     expect(wrapper.exists()).toBeTruthy()
   })
 
   it('wraps the app in a div', () => {
-    const wrapper = shallow(<App />)
+    const wrapper = shallow(<App name='test' loading={false} />)
 
     expect(wrapper.find('.poke-main')).toHaveLength(1)
   })
 
   it('contains a switch', () => {
-    const wrapper = shallow(<App />)
+    const wrapper = shallow(<App name='test' loading={false} />)
 
     expect(wrapper.find(Switch)).toHaveLength(1)
   })
 
   it('has 2 routes', () => {
-    const wrapper = shallow(<App />)
+    const wrapper = shallow(<App name='test' loading={false} />)
 
     expect(wrapper.find(Route)).toHaveLength(3)
   })
