@@ -1,5 +1,13 @@
 @import "../../style/variables.scss";
 
-.poke-main {
-  background: $gray-200;
+body {
+  background-color: $gray-900;
+}
+
+.boilerplate-main {
+  color: $gray-100;
+
+  button {
+    width: 100%;
+  }
 }

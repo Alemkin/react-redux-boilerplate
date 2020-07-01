@@ -1,5 +1,0 @@
-LoadingIcon example:
-
-```js
-<LoadingIcon />
-```

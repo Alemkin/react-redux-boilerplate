@@ -1,14 +1,20 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Home from './component'
+import Login from './component'
 import { cleanup } from 'react-testing-library'
 import '../../../test.config'
 
 afterEach(cleanup)
 
-describe('Home component', () => {
+describe('Login component', () => {
   it('renders', () => {
-    const wrapper = shallow(<Home id={129} weight={100} order={191} />)
+    const wrapper = shallow(
+      <Login
+        error={{ code: 0, message: '' }}
+        login={() => true}
+        loading={false}
+      />
+    )
 
     expect(wrapper.exists()).toBe(true)
   })

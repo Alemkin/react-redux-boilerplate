@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import Header from './component'
-import { selectPokemon } from '../../reducers/pokemon'
+import { selectAuth } from '../../reducers/auth'
 
 const HeaderContainer = () => {
-  const pokemon = useSelector(selectPokemon)
+  const auth = useSelector(selectAuth)
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggle = () => setIsOpen(!isOpen)
 
   return (
-    <Header name={pokemon.name} />
+    <Header user={auth.user} toggle={toggle} isOpen={isOpen} />
   )
 }
 

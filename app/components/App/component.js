@@ -1,28 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Container, Row, Col } from 'reactstrap'
+import { Container } from 'reactstrap'
 import { Switch, Route, useLocation } from 'react-router-dom'
 import Header from '../Header'
-import Home from '../Home'
-import LoadingIcon from '../LoadingIcon'
-import { translateComponent } from '../../utils/translate'
+import Dashboard from '../Dashboard'
+import Login from '../Login'
 import './index.scss'
 
-const t = translateComponent('App')
-
-const NotFound = () => <Row><Col><h1>{t('notfound')}</h1></Col></Row>
-
-const App = ({ name, loading, error }) => {
+const App = ({ user }) => {
   const location = useLocation()
-  if (loading) return <LoadingIcon />
+  const isLoggedIn = user && user.id
 
   return (
-    <div className='poke-main'>
+    <div className='boilerplate-main'>
       <Container fluid>
         <Route path='/' component={Header} />
         <Switch>
-          <Route exact path='/' component={Home} key={location.pathname} />
-          <Route path='' component={NotFound} key={location.pathname} />
+          {isLoggedIn && <Route exact path='/' component={Dashboard} key={location.pathname} />}
+          <Route exact path='/login' component={Login} key={location.pathname} />
         </Switch>
       </Container>
     </div>
@@ -30,8 +25,7 @@ const App = ({ name, loading, error }) => {
 }
 
 App.propTypes = {
-  name: PropTypes.string.isRequired,
-  loading: PropTypes.bool.isRequired
+  user: PropTypes.object.isRequired
 }
 
 export default App
