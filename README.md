@@ -1,6 +1,7 @@
 This is boilerplate code for React Redux web applications
 
-It uses Webpack 4, React 16, Redux, Bootstrap 4, Styleguidist, ESLint with StandardJS + a11y, Sagas, and Jest
+It uses Webpack 4, React 16, Redux, Bootstrap 4, ESLint with StandardJS + a11y, Sagas, and Jest
+There is an implmentation for Login using JWT with refresh mechanisms and redux store initializing
 
 Works out of the box, just need to have Node, and NPM installed
 
