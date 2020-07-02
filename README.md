@@ -4,7 +4,7 @@ It uses Webpack 4, React 16, Redux, Bootstrap 4, ESLint with StandardJS + a11y, 
 
 There is an implementation for Login using JWT with refresh mechanisms and redux store initializing
 
-This boilerplate is also implementated as a Progressive Web App. Modify the manifest.json and icon in the pwa folder to personalize
+This boilerplate is also implemented as a Progressive Web App. Modify the manifest.json and icon in the pwa folder to personalize
 
 Works out of the box, just need to have Node, and NPM installed
 
