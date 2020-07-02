@@ -4,8 +4,11 @@ import { Row, Col, Form, FormGroup, Label, Input, Button, FormFeedback } from 'r
 import StandardError from '../StandardError'
 import useInput from '../../hooks/useInput'
 import { validateEmail } from '../../utils/validators'
+import { translateComponent } from '../../utils/translate'
 
-const cols = { xs: 12, md: { size: 6, offset: 3 } }
+const t = translateComponent('Login')
+
+const cols = { xs: 12, md: { size: 6, offset: 3 }, lg: { size: 4, offset: 4 } }
 const Login = ({ login, loading, error }) => {
   const { bind: bindEmail } = useInput({ initialValue: '', required: true, validate: validateEmail })
   const { bind: bindPassword } = useInput({ initialValue: '', required: true })
@@ -17,16 +20,16 @@ const Login = ({ login, loading, error }) => {
       <Col {...cols}>
         <Form onSubmit={login({ bindEmail, bindPassword })} noValidate>
           <FormGroup>
-            <Label for='email'>Email</Label>
-            <Input type='email' name='email' id='email' placeholder='Enter your Email Address' {...bindEmail} />
-            <FormFeedback>Please enter a valid email address</FormFeedback>
+            <Label for='email'>{t('email')}</Label>
+            <Input type='email' name='email' id='email' placeholder={t('emailPlaceholder')} {...bindEmail} />
+            <FormFeedback>{t('invalidEmail')}</FormFeedback>
           </FormGroup>
           <FormGroup>
-            <Label for='password'>Password</Label>
-            <Input type='password' name='password' id='password' placeholder='Enter Your Password' {...bindPassword} />
-            <FormFeedback>Please enter a password</FormFeedback>
+            <Label for='password'>{t('password')}</Label>
+            <Input type='password' name='password' id='password' placeholder={t('emailPlaceholder')} {...bindPassword} />
+            <FormFeedback>{t('invalidPassword')}</FormFeedback>
           </FormGroup>
-          <Button disabled={loading} color='info'>{!loading ? 'Log in' : 'Logging In ...'}</Button>
+          <Button disabled={loading} color='info'>{!loading ? t('login') : t('loggingIn')}</Button>
         </Form>
       </Col>
     </Row>

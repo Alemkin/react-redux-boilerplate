@@ -1,5 +1,6 @@
-export default function register () { // Register the service worker
-  if ('serviceWorker' in navigator) {
+export default function register () {
+  // Only registering if in production, change in you want to test locally
+  if (process.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       const swUrl = 'service-worker.js'
       navigator.serviceWorker

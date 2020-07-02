@@ -3,7 +3,11 @@ import PropTypes from 'prop-types'
 import { Row, Col, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { logout } from '../../utils/fetch'
+import { translateComponent } from '../../utils/translate'
+
 import './index.scss'
+
+const t = translateComponent('Header')
 
 const Header = ({ user, toggle, isOpen }) => {
   const isLoggedIn = !!(user && user.id)
@@ -11,7 +15,7 @@ const Header = ({ user, toggle, isOpen }) => {
     <Row className='header'>
       <Col>
         <Navbar dark expand='md'>
-          <NavbarBrand tag={Link} to='/'>Boilerplate</NavbarBrand>
+          <NavbarBrand tag={Link} to='/'>{t('brand')}</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className='mr-auto' navbar>
@@ -19,7 +23,7 @@ const Header = ({ user, toggle, isOpen }) => {
                 isLoggedIn &&
                   <>
                     <NavItem>
-                      <NavLink tag={Link} to='/'>Dashboard</NavLink>
+                      <NavLink tag={Link} to='/'>{t('dashboard')}</NavLink>
                     </NavItem>
                   </>
               }
@@ -28,7 +32,7 @@ const Header = ({ user, toggle, isOpen }) => {
               {
                 !isLoggedIn &&
                   <NavItem>
-                    <NavLink tag={Link} to='/login'>Login</NavLink>
+                    <NavLink tag={Link} to='/login'>{t('login')}</NavLink>
                   </NavItem>
               }
               {
