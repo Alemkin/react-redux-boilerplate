@@ -13,7 +13,8 @@ import '../favicon.ico'
 
 import { initTranslator } from './utils/translate'
 
-import registerServiceWorker from './registerServiceWorker'
+// Uncomment this if you want to enable this app as a Progressive Web App
+// import registerServiceWorker from './registerServiceWorker'
 
 initTranslator()
 
@@ -26,4 +27,5 @@ ReactDOM.render(
   document.getElementById('app')
 )
 
-registerServiceWorker()
+// Uncomment this if you want to enable this app as a Progressive Web App
+// registerServiceWorker()
