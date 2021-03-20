@@ -7,6 +7,8 @@
 
 Welcome to my Boilerplate for React projects.
 
+First and foremost, it is important to mention that all sites can and should build with an accessibility first mindset.
+[https://www.w3.org/WAI/fundamentals/accessibility-usability-inclusion/](https://www.w3.org/WAI/fundamentals/accessibility-usability-inclusion/)
   
 
 This project contains everything needed to quickly bootstrap a new UI project. You only need to pull it down and replace the naming and URLs in a few areas, but otherwise it will work out of the box.
