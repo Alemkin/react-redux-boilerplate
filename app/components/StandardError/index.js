@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Markdown from 'react-markdown'
 import { decodeErrorMessage } from './errorDecoder'
 import { Alert } from 'reactstrap'
 import './index.scss'
@@ -16,7 +15,7 @@ const StandardError = ({ code, message }) => {
 
 const ErrorBox = ({ message }) => {
   if (!message) return null
-  return <Markdown source={message} className='error-box-markdown' />
+  return <div className='error-box-markdown'>{message}</div>
 }
 
 ErrorBox.propTypes = {

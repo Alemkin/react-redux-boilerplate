@@ -2,27 +2,16 @@ const path = require('path')
 const EncodingPlugin = require('webpack-encoding-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ManifestPlugin = require('webpack-manifest-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const { GenerateSW } = require('workbox-webpack-plugin')
+const webpack = require('webpack')
 
 const encodingPlugin = new EncodingPlugin({
   encoding: 'UTF-8'
 })
-
-const minimize = {
-  minimizer: [
-    new TerserPlugin({
-      parallel: true,
-      terserOptions: {
-        ecma: 5
-      }
-    }),
-    new OptimizeCSSAssetsPlugin({})
-  ]
-}
 
 module.exports = {
   entry: [
@@ -51,8 +40,13 @@ module.exports = {
           }
         ]
       },
-      { test: /\.js$/, use: ['i18next-resource-store-loader'], include: path.join(__dirname, './app/translations') },
-      { test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/, loader: 'file-loader?name=[name].[ext]' }
+      {
+        test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]'
+        }
+      }
     ]
   },
 
@@ -68,7 +62,7 @@ module.exports = {
       filename: 'index.html',
       title: 'R/R Boilerplate'
     }),
-    new ManifestPlugin({
+    new WebpackManifestPlugin({
       fileName: 'asset-manifest.json'
     }),
     new GenerateSW({
@@ -81,10 +75,21 @@ module.exports = {
         { from: './assets/js/core-js-3.6.4.min.js', to: './assets/js' },
         { from: './assets/js/runtime-0.13.3.min.js', to: './assets/js' }
       ]
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser'
     })
   ],
 
-  optimization: process.env.NODE_ENV === 'production' ? minimize : {},
+  optimization: {
+    minimize: process.env.NODE_ENV === 'production',
+    minimizer: [
+      new TerserPlugin({
+        parallel: true
+      }),
+      new CssMinimizerPlugin()
+    ]
+  },
 
   devServer: {
     port: 3002,

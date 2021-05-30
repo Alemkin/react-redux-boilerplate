@@ -11,12 +11,8 @@ import './sagas'
 
 import '../favicon.ico'
 
-import { initTranslator } from './utils/translate'
-
 // Uncomment this if you want to enable this app as a Progressive Web App
 // import registerServiceWorker from './registerServiceWorker'
-
-initTranslator()
 
 ReactDOM.render(
   <Provider store={store}>

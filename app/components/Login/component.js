@@ -4,9 +4,9 @@ import { Row, Col, Form, FormGroup, Label, Input, Button, FormFeedback } from 'r
 import StandardError from '../StandardError'
 import useInput from '../../hooks/useInput'
 import { validateEmail } from '../../utils/validators'
-import { translateComponent } from '../../utils/translate'
+import translations from '../../translations'
 
-const t = translateComponent('Login')
+const t = translations.Login
 
 const cols = { xs: 12, md: { size: 6, offset: 3 }, lg: { size: 4, offset: 4 } }
 const Login = ({ login, loading, error }) => {
@@ -20,16 +20,16 @@ const Login = ({ login, loading, error }) => {
       <Col {...cols}>
         <Form onSubmit={login({ bindEmail, bindPassword })} noValidate>
           <FormGroup>
-            <Label for='email'>{t('email')}</Label>
-            <Input type='email' name='email' id='email' placeholder={t('emailPlaceholder')} {...bindEmail} />
-            <FormFeedback>{t('invalidEmail')}</FormFeedback>
+            <Label for='email'>{t.email}</Label>
+            <Input type='email' name='email' id='email' placeholder={t.emailPlaceholder} {...bindEmail} />
+            <FormFeedback>{t.invalidEmail}</FormFeedback>
           </FormGroup>
           <FormGroup>
-            <Label for='password'>{t('password')}</Label>
-            <Input type='password' name='password' id='password' placeholder={t('emailPlaceholder')} {...bindPassword} />
-            <FormFeedback>{t('invalidPassword')}</FormFeedback>
+            <Label for='password'>{t.password}</Label>
+            <Input type='password' name='password' id='password' placeholder={t.emailPlaceholder} {...bindPassword} />
+            <FormFeedback>{t.invalidPassword}</FormFeedback>
           </FormGroup>
-          <Button disabled={loading} color='info'>{!loading ? t('login') : t('loggingIn')}</Button>
+          <Button disabled={loading} color='info'>{!loading ? t.login : t.loggingIn}</Button>
         </Form>
       </Col>
     </Row>

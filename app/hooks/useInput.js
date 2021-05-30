@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { isEmpty } from 'lodash'
+import isEmpty from '../utils/isEmpty'
 
 export const useInput = (options) => {
   const [value, setValue] = useState(options.initialValue)

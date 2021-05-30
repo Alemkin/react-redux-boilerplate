@@ -274,11 +274,7 @@ Linting is used to ensure common standards are being followed for our JavaScript
 
 2. The `translations` folder contains files correlating to translated languages.
 
-3. The only file we currently have is the `translation.json` file in the `en` folder for English. It uses key values based on the component name, then keys for each translated word or sentence in the file.
-
 4. Within the component file, you can reference the translation by passing in the name of the component key and then get a function you can pass keys for the translations within that component section to get the values.
-
-5. These helper functions are located in the `translate.js` file in the `utils` folder. The main helper you will use is `translateComponent` where you will pass the component name in and get a function back.
 
   
 
